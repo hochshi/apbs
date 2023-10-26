@@ -9,3 +9,6 @@ add_items(
 )
 
 add_sublibrary(geoflow_apbs)
+target_link_libraries(apbs_geoflow_apbs
+  PUBLIC apbs_generic
+)

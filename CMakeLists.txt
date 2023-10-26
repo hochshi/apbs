@@ -1,4 +1,5 @@
 cmake_minimum_required (VERSION 3.16)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ###############################################################################
 #  Get the Current Version Number so that it can be embedded in files later
@@ -370,6 +371,8 @@ message(STATUS "SUITESPARSE_LIBRARIES: ${SUITESPARSE_LIBRARIES}")
 list(APPEND APBS_LIBS
     ${UMFPACK_LIBRARIES}
     ${SUITESPARSE_LIBRARIES}
+    ${BLAS_LIBRARIES}
+    ${LAPACK_LIBRARIES}
 )
 
 ################################################################################
@@ -415,7 +418,7 @@ if(ENABLE_BEM)
     message(STATUS "Building TABIPB")
     #set(TABI bem)
     #set(TABI_PATH ${EXTERNALS_PATH}/${TABI})
-    set(GET_NanoShaper ON) #CACHE BOOL "Grabbing NanoShaper path"
+    # set(GET_NanoShaper ON) #CACHE BOOL "Grabbing NanoShaper path"
     add_definitions(-DENABLE_BEM)
     # We turn the TABIPB/APBS wrapper off and build here instead
     set(ENABLE_TABIPB_APBS OFF CACHE BOOL "Turn off TABIPB/APBS wrapper" FORCE)

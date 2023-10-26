@@ -3,7 +3,7 @@ enable_testing()
 
 message(STATUS "******* TESTING ADDED *****************")
 #set (Python3_FIND_ABI "OFF" "ANY" "ANY")
-find_package(Python3 ${PYTHON_VERSION} EXACT REQUIRED COMPONENTS Interpreter)
+find_package(Python3 ${PYTHON_VERSION} REQUIRED COMPONENTS Interpreter)
 
 set(APBS_BINARY "apbs")
 if(CMAKE_HOST_WIN32)
