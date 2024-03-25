@@ -291,8 +291,14 @@ enum eVdata_Type {
                  * specified scheme (dimensionless) */
     VDT_DIELZ,  /**< Dielectric y-shifted map as calculated with the currently
                  * specified scheme (dimensionless) */
-    VDT_KAPPA   /**< Kappa map as calculated with the currently
+    VDT_KAPPA,   /**< Kappa map as calculated with the currently
                  * specified scheme (\f$\AA^{-3}\f$) */
+    VDT_EFX,    /** Electric field in the X direction, this is the gradient of the potential
+                * (Kt/e/A) */
+    VDT_EFY,    /** Electric field in the Y direction, this is the gradient of the potential
+                * (Kt/e/A) */
+    VDT_EFZ,    /** Electric field in the Z direction, this is the kradient of the potential
+                * (Kt/e/A) */
 };
 
 /** @typedef Vdata_Type

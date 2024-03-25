@@ -2452,6 +2452,13 @@ VPUBLIC int Vfetk_fillArray(Vfetk *thee, Bvec *vec, Vdata_Type type) {
             return 0;
             break;
 
+        case VDT_EFX:
+        case VDT_EFY:
+        case VDT_EFZ:
+            Vnm_print(2, "Vfetk_fillArray:  can't write out electric field!\n");
+            return 0;
+            break;
+
         default:
             Vnm_print(2, "Vfetk_fillArray:  invalid data type (%d)!\n", type);
             return 0;

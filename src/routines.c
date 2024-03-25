@@ -1242,6 +1242,15 @@ to ");
         case VDT_ATOMPOT:
             Vnm_tprint(1, "  Atom potentials to be written to ");
             break;
+        case VDT_EFX:
+            Vnm_tprint(1, "  X electric field map to be written to ");
+            break;
+        case VDT_EFY:
+            Vnm_tprint(1, "  Y electric field map to be written to ");
+            break;
+        case VDT_EFZ:
+            Vnm_tprint(1, "  Z electric field map to be written to ");
+            break;
         default:
             Vnm_tprint(2, "  Invalid data type for writing!\n");
             break;
@@ -2883,6 +2892,49 @@ VPUBLIC int writedataMG(int rank,
             sprintf(title,
                     "ATOM POTENTIALS");
             break;
+
+        case VDT_EFX:
+
+            Vnm_tprint(1, "  Writing X electric field to ");
+            xcent = pmg->pmgp->xcent;
+            ycent = pmg->pmgp->ycent;
+            zcent = pmg->pmgp->zcent;
+            xmin = xcent - 0.5 * (nx - 1) * hx;
+            ymin = ycent - 0.5 * (ny - 1) * hy;
+            zmin = zcent - 0.5 * (nz - 1) * hzed;
+            VASSERT(Vpmg_fillArray(pmg, pmg->rwork, VDT_EFX, 0.0,
+                                   pbeparm->pbetype, pbeparm));
+            sprintf(title, "ELECTRIC FIELD (kT/e/A)");
+            break;
+
+        case VDT_EFY:
+
+            Vnm_tprint(1, "  Writing Y electric field to ");
+            xcent = pmg->pmgp->xcent;
+            ycent = pmg->pmgp->ycent;
+            zcent = pmg->pmgp->zcent;
+            xmin = xcent - 0.5 * (nx - 1) * hx;
+            ymin = ycent - 0.5 * (ny - 1) * hy;
+            zmin = zcent - 0.5 * (nz - 1) * hzed;
+            VASSERT(Vpmg_fillArray(pmg, pmg->rwork, VDT_EFY, 0.0,
+                                   pbeparm->pbetype, pbeparm));
+            sprintf(title, "ELECTRIC FIELD (kT/e/A)");
+            break;
+
+        case VDT_EFZ:
+
+            Vnm_tprint(1, "  Writing Z electric field to ");
+            xcent = pmg->pmgp->xcent;
+            ycent = pmg->pmgp->ycent;
+            zcent = pmg->pmgp->zcent;
+            xmin = xcent - 0.5 * (nx - 1) * hx;
+            ymin = ycent - 0.5 * (ny - 1) * hy;
+            zmin = zcent - 0.5 * (nz - 1) * hzed;
+            VASSERT(Vpmg_fillArray(pmg, pmg->rwork, VDT_EFZ, 0.0,
+                                   pbeparm->pbetype, pbeparm));
+            sprintf(title, "ELECTRIC FIELD (kT/e/A)");
+            break;
+
         default:
 
             Vnm_tprint(2, "Invalid data type for writing!\n");

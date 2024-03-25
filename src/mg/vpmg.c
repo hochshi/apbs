@@ -1133,6 +1133,63 @@ VPUBLIC int Vpmg_fillArray(Vpmg *thee, double *vec, Vdata_Type type,
             }}}
             break;
 
+        case VDT_EFX:
+
+            grid = Vgrid_ctor(nx, ny, nz, hx, hy, hzed, xmin, ymin, zmin,
+              thee->u);
+            for (k=0; k<nz; k++) {
+                for (j=0; j<ny; j++) {
+                    for (i=0; i<nx; i++) {
+
+                        position[0] = i*hx + xmin;
+                        position[1] = j*hy + ymin;
+                        position[2] = k*hzed + zmin;
+                        VASSERT(Vgrid_gradient(grid, position, grad));
+                        vec[IJK(i,j,k)] = grad[0];
+                    }
+                }
+            }
+            Vgrid_dtor(&grid);
+            break;
+
+        case VDT_EFY:
+
+            grid = Vgrid_ctor(nx, ny, nz, hx, hy, hzed, xmin, ymin, zmin,
+              thee->u);
+            for (k=0; k<nz; k++) {
+                for (j=0; j<ny; j++) {
+                    for (i=0; i<nx; i++) {
+
+                        position[0] = i*hx + xmin;
+                        position[1] = j*hy + ymin;
+                        position[2] = k*hzed + zmin;
+                        VASSERT(Vgrid_gradient(grid, position, grad));
+                        vec[IJK(i,j,k)] = grad[1];
+                    }
+                }
+            }
+            Vgrid_dtor(&grid);
+            break;
+
+        case VDT_EFZ:
+
+            grid = Vgrid_ctor(nx, ny, nz, hx, hy, hzed, xmin, ymin, zmin,
+              thee->u);
+            for (k=0; k<nz; k++) {
+                for (j=0; j<ny; j++) {
+                    for (i=0; i<nx; i++) {
+
+                        position[0] = i*hx + xmin;
+                        position[1] = j*hy + ymin;
+                        position[2] = k*hzed + zmin;
+                        VASSERT(Vgrid_gradient(grid, position, grad));
+                        vec[IJK(i,j,k)] = grad[2];
+                    }
+                }
+            }
+            Vgrid_dtor(&grid);
+            break;
+
         default:
 
             Vnm_print(2, "main:  Bogus data type (%d)!\n", type);
