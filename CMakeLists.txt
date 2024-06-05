@@ -425,8 +425,8 @@ if(ENABLE_BEM)
 
     #add_subdirectory(${EXTERNALS_PATH}/${TABI})
     FetchContent_Declare( tabi
-        GIT_REPOSITORY https://github.com/Treecodes/TABI-PB.git
-        GIT_TAG fe1c237b057418fed48535db125394607040d9de
+        GIT_REPOSITORY https://github.com/hochshi/TABI-PB.git
+        GIT_TAG 912aff72694c928309d30286852a0a4bcb6d7316
     )
     FetchContent_MakeAvailable( tabi )
 
