@@ -212,12 +212,12 @@ VPUBLIC int Vgrid_value(Vgrid *thee, double pt[3], double *value) {
     jfloat = (pt[1] - ymin)/hy;
     kfloat = (pt[2] - zmin)/hzed;
 
-    ihi = (int)ceil(ifloat);
-    jhi = (int)ceil(jfloat);
-    khi = (int)ceil(kfloat);
-    ilo = (int)floor(ifloat);
-    jlo = (int)floor(jfloat);
-    klo = (int)floor(kfloat);
+    ihi = (size_t)VMAX2(ceil(ifloat), 0.0);
+    jhi = (size_t)VMAX2(ceil(jfloat), 0.0);
+    khi = (size_t)VMAX2(ceil(kfloat), 0.0);
+    ilo = (size_t)VMAX2(floor(ifloat), 0.0);
+    jlo = (size_t)VMAX2(floor(jfloat), 0.0);
+    klo = (size_t)VMAX2(floor(kfloat), 0.0);
     if (VABS(pt[0] - xmin) < Vcompare) ilo = 0;
     if (VABS(pt[1] - ymin) < Vcompare) jlo = 0;
     if (VABS(pt[2] - zmin) < Vcompare) klo = 0;
